@@ -111,3 +111,109 @@ func convertWithTarget(_ array: [Any], target: Int) -> [String] {
 
 let result4 = convertWithTarget(array4, target: 3)
 print(result4)
+
+
+
+
+//2 -
+
+
+
+//Question: Implement a function that takes an array of integers and returns the product of all the elements in the array. Use the reduce function.
+//
+//Follow-up: Modify the function to return the sum of squares of all the elements using reduce.
+
+
+func calculate(inputArray: [Int]) -> Int {
+    
+    inputArray.reduce(1) { partialResult, nextNumber in
+        return partialResult * nextNumber
+    }
+}
+
+let array5 = [2,4,1,3]
+let result5 = calculate(inputArray: array5)
+print(result5)
+
+func calculateNew(inputArray: [Int]) -> Int {
+    
+    inputArray.reduce(0) { partialResult, nextNumber in
+        return partialResult + (nextNumber * nextNumber)
+    }
+}
+
+let result6 = calculateNew(inputArray: array5)
+print(result6)
+
+
+//3
+//Question: Given an array of strings, sort the array in descending order based on the length of each string using the sorted function.
+//
+//Follow-up: Write a function that returns the strings sorted first by length (ascending) and then alphabetically (for strings of the same length) using the sorted function with a custom comparator.
+
+
+let strArray = ["Kishan", "Rahib", "Gautam", "Shalabh", "Ravindra"]
+
+
+let result7 = strArray.sorted { first, second in
+    return first.count < second.count
+}
+
+print(result7)
+print(strArray.sorted(by: >))
+
+//Sorted by length
+let result8 = strArray.sorted(using: [
+    KeyPathComparator(\.count, order: .forward)
+])
+print(result8)
+
+let result9 = strArray.sorted(using: [
+    KeyPathComparator(\.count, order: .forward)
+]).sorted(by: <)
+print(result9)
+
+let result10 = strArray.sorted { first, second in
+    return first.count < second.count
+}.sorted(by: <)
+
+
+print(result10)
+
+
+
+
+
+
+//TODO: -
+
+
+//4. Combining Higher-Order Functions
+//
+//Question: Write a function that takes an array of integers, filters out the even numbers, doubles the remaining numbers, and then returns their sum. Use a combination of filter, map, and reduce.
+//
+//5. FlatMap
+//
+//Question: Given an array of arrays of integers, flatten the array and return a single array containing all the integers in ascending order. Use flatMap and sorted to achieve this.
+//
+//6. CompactMap
+//
+//Question: Write a function that takes an array of optional integers and returns an array of non-nil integers, incremented by 1. Use compactMap.
+//
+//7. Group By
+//
+//Question: Implement a function that takes an array of strings and groups them by their first character. The result should be a dictionary where the keys are characters and the values are arrays of strings that start with that character. Use reduce or Dictionary(grouping:by:).
+//
+//8. Chaining Multiple Functions
+//
+//Question: Write a function that takes an array of integers, removes duplicates, filters out numbers less than a given threshold, squares the remaining numbers, and returns them sorted in descending order. Use a combination of Set, filter, map, and sorted.
+//
+//9. Partial Application
+//
+//Question: Implement a function that adds a given number to each element of an array. Write it using partial application and a higher-order function like map.
+//
+//10. Custom Reduce
+//
+//Question: Write a custom version of reduce that takes an array, an initial value, and a combining closure, and returns the accumulated result.
+//
+//These questions will help assess the candidate’s understanding and ability to work with higher-order functions in Swift.
